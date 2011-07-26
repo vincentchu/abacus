@@ -32,4 +32,11 @@ describe Abacus::Counter do
       @counter.counts.should == {"bar" => 10, "baz" => -10}
     end
   end
+
+  describe "#reset!" do
+    it "should delete the counter if requested" do
+      Abacus.redis.should_receive(:del).once.with("abacus:foo").and_return(1)
+      @counter.reset!
+    end
+  end
 end

@@ -23,6 +23,10 @@ module Abacus
       counts
     end
 
+    def reset!
+      Abacus.redis.del( redis_hash_key )
+    end
+
     private
 
     def redis_hash_key
