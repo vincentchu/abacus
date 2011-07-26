@@ -6,8 +6,9 @@ module Abacus
 
   extend self
 
-  
-
+  def method_missing(method, *args, &block)
+    Abacus::Counter.new( method )
+  end
 
   def redis
     $redis
